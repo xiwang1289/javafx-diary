@@ -27,3 +27,4 @@ hs_err_pid*
 /target
 /.classpath
 **/.DS_Store
+src/main/resources/application.properties
