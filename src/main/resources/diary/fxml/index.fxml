@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.coffee.diary.controller.IndexController">
+	<children>
+    	<BorderPane layoutX="33.0" layoutY="33.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         	<top>
+            	<MenuBar BorderPane.alignment="CENTER">
+              		<menus>
+                		<Menu fx:id="fileMenu" mnemonicParsing="false" text="文件">
+                  			<items>
+                    			<MenuItem mnemonicParsing="false" onAction="#exitAction" text="退出" />
+                  			</items>
+                		</Menu>
+                		<Menu mnemonicParsing="false" text="帮助">
+                  			<items>
+                    			<MenuItem mnemonicParsing="false" onAction="#aboutAction" text="关于" />
+                  			</items>
+                		</Menu>
+              		</menus>
+            	</MenuBar>
+         	</top>
+         	<center>
+            	<SplitPane dividerPositions="0.25" BorderPane.alignment="CENTER">
+              		<items>
+                		<AnchorPane minHeight="0.0" minWidth="0.0" >
+                     		<children>
+                        		<TreeView fx:id="catalogTree" editable="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
+                     		</children>
+                  		</AnchorPane>
+                		<AnchorPane fx:id="splitRightAnchorPane">
+                     		<children>
+                        		<!-- <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="84.0" layoutY="97.0" prefHeight="200.0" prefWidth="506.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" /> -->
+                     		</children>
+                  		</AnchorPane>
+              		</items>
+            	</SplitPane>
+         	</center>
+		</BorderPane>
+	</children>
+</AnchorPane>
