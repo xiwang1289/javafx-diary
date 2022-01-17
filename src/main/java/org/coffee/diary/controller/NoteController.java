@@ -31,7 +31,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.HTMLEditor;
 
 @FXMLController
-public class IndexController implements Initializable {
+public class NoteController implements Initializable {
 
 	private final Logger		log	= LoggerFactory.getLogger(getClass());
 
