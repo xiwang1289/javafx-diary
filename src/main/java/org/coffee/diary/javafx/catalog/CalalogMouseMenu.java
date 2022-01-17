@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 import org.coffee.diary.common.DiaryConstants;
-import org.coffee.diary.service.CatalogService;
+import org.coffee.diary.service.NoteService;
 
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
@@ -13,14 +13,14 @@ import javafx.scene.control.TreeView;
 
 public class CalalogMouseMenu extends ContextMenu {
 
-	private CatalogService		catalogService;
+	private NoteService			noteService;
 	private TreeView<String>	catalogTree;
 
 	public CalalogMouseMenu(
-			CatalogService catalogService,
+			NoteService noteService,
 			TreeView<String> catalogTree) {
 
-		this.catalogService = catalogService;
+		this.noteService = noteService;
 		this.catalogTree = catalogTree;
 	}
 
@@ -38,7 +38,7 @@ public class CalalogMouseMenu extends ContextMenu {
 			parentItem.setExpanded(true);
 			parentItem.getChildren().add(newItem);
 			parentItem.getCatalog().getChildren().add(newCatalog);
-			catalogService.updateCatalog(((CatalogTreeItem) catalogTree.getRoot()).getCatalog());
+			noteService.updateCatalog(((CatalogTreeItem) catalogTree.getRoot()).getCatalog());
 		});
 		MenuItem item12 = new MenuItem("新建相邻文档");
 		item12.setOnAction(event -> {
@@ -53,7 +53,7 @@ public class CalalogMouseMenu extends ContextMenu {
 			parentItem.setExpanded(true);
 			parentItem.getChildren().add(newItem);
 			parentItem.getCatalog().getChildren().add(newCatalog);
-			catalogService.updateCatalog(((CatalogTreeItem) catalogTree.getRoot()).getCatalog());
+			noteService.updateCatalog(((CatalogTreeItem) catalogTree.getRoot()).getCatalog());
 		});
 		getItems().add(item11);
 		getItems().add(item12);
@@ -72,7 +72,7 @@ public class CalalogMouseMenu extends ContextMenu {
 			parentItem.setExpanded(true);
 			parentItem.getChildren().add(newItem);
 			parentItem.getCatalog().getChildren().add(newCatalog);
-			catalogService.updateCatalog(((CatalogTreeItem) catalogTree.getRoot()).getCatalog());
+			noteService.updateCatalog(((CatalogTreeItem) catalogTree.getRoot()).getCatalog());
 		});
 		getItems().add(item21);
 		// 插入分隔线
@@ -85,7 +85,7 @@ public class CalalogMouseMenu extends ContextMenu {
 			CatalogTreeItem selectItem = (CatalogTreeItem) catalogTree.getSelectionModel().getSelectedItem();
 			parentItem.getChildren().remove(selectItem);
 			parentItem.getCatalog().getChildren().remove(selectItem.getCatalog());
-			catalogService.updateCatalog(((CatalogTreeItem) catalogTree.getRoot()).getCatalog());
+			noteService.updateCatalog(((CatalogTreeItem) catalogTree.getRoot()).getCatalog());
 		});
 		MenuItem item32 = new MenuItem("重命名");
 		item32.setOnAction(event -> {

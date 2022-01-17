@@ -16,6 +16,7 @@
               		<menus>
                 		<Menu fx:id="fileMenu" mnemonicParsing="false" text="文件">
                   			<items>
+                    			<MenuItem mnemonicParsing="false" onAction="#saveAction" text="保存" />
                     			<MenuItem mnemonicParsing="false" onAction="#exitAction" text="退出" />
                   			</items>
                 		</Menu>
@@ -32,12 +33,12 @@
               		<items>
                 		<AnchorPane minHeight="0.0" minWidth="0.0" >
                      		<children>
-                        		<TreeView fx:id="catalogTree" editable="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
+                        		<TreeView fx:id="catalogTree" editable="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" onMouseClicked="#onMouseClicked"/>
                      		</children>
                   		</AnchorPane>
                 		<AnchorPane fx:id="splitRightAnchorPane">
                      		<children>
-                        		<!-- <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="84.0" layoutY="97.0" prefHeight="200.0" prefWidth="506.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" /> -->
+                        		<!-- <HTMLEditor visible="false" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" /> -->
                      		</children>
                   		</AnchorPane>
               		</items>

@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 import org.coffee.diary.javafx.catalog.CalalogMouseMenu;
 import org.coffee.diary.javafx.catalog.CatalogTreeCell;
 import org.coffee.diary.javafx.catalog.CatalogTreeItem;
-import org.coffee.diary.service.CatalogService;
+import org.coffee.diary.service.NoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +28,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.web.HTMLEditor;
 
 @FXMLController
 public class IndexController implements Initializable {
@@ -43,9 +44,19 @@ public class IndexController implements Initializable {
 	private TreeView<String>	catalogTree;
 	@FXML
 	private AnchorPane			splitRightAnchorPane;
+	@FXML
+	private HTMLEditor			note;
+	@FXML
+	private TableView<String>	noteList;
 
 	@Autowired
-	private CatalogService		catalogService;
+	private NoteService			noteService;
+
+	@FXML
+	private void saveAction(ActionEvent event) {
+
+		System.out.println("saveAction");
+	}
 
 	@FXML
 	private void exitAction(ActionEvent event) {
@@ -67,7 +78,6 @@ public class IndexController implements Initializable {
 	@FXML
 	private void onMouseClicked(MouseEvent event) {
 
-		openRightPane();
 		System.out.println("onMouseClicked");
 	}
 
@@ -86,16 +96,6 @@ public class IndexController implements Initializable {
 		}
 	}
 
-	private void openRightPane() {
-
-		//
-		// Parent node = noteView.getView();
-		// node.setNodeOrientation(NodeOrientation.INHERIT);
-		// node.setRotate(0);
-		// indexLayout.setCenter(node);
-		// indexLayout.getCenter().setVisible(false);
-	}
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -105,7 +105,7 @@ public class IndexController implements Initializable {
 
 	private void initBorderPaneCenter() {
 
-		// HTMLEditor node = new HTMLEditor();
+		HTMLEditor node2 = new HTMLEditor();
 
 		TableView<String> node = new TableView<String>();
 		node.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -116,21 +116,21 @@ public class IndexController implements Initializable {
 		AnchorPane.setBottomAnchor(node, 2.0);
 		AnchorPane.setRightAnchor(node, 2.0);
 		AnchorPane.setTopAnchor(node, 2.0);
-		splitRightAnchorPane.getChildren().add(node);
+		// splitRightAnchorPane.getChildren().add(node);
 
 	}
 
 	private void initBorderPaneLeft() {
 
-		CatalogTreeItem catalog = catalogService.readCatalog();
+		CatalogTreeItem catalog = noteService.readCatalog();
 		if (catalog != null) {
 			catalogTree.setRoot(catalog);
 			// 是否显示根目录
 			catalogTree.setShowRoot(true);
 			catalogTree.setEditable(true);
-			catalogTree.setCellFactory(v -> new CatalogTreeCell(catalogService));
+			catalogTree.setCellFactory(v -> new CatalogTreeCell(noteService));
 		}
-		CalalogMouseMenu mouseMenu = new CalalogMouseMenu(catalogService, catalogTree);
+		CalalogMouseMenu mouseMenu = new CalalogMouseMenu(noteService, catalogTree);
 		mouseMenu.getInstance();
 		catalogTree.setContextMenu(mouseMenu);
 	}

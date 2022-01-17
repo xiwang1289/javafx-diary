@@ -1,6 +1,6 @@
 package org.coffee;
 
-import org.coffee.diary.view.IndexView;
+import org.coffee.diary.view.NoteView;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 @SpringBootApplication
 public class DiaryStart extends AbstractJavaFxApplicationSupport {
@@ -35,6 +36,14 @@ public class DiaryStart extends AbstractJavaFxApplicationSupport {
 				return vbox;
 			}
 		};
-		launch(DiaryStart.class, IndexView.class, splashScreen, args);
+		launch(DiaryStart.class, NoteView.class, splashScreen, args);
+	}
+
+	@Override
+	public void start(Stage stage) throws Exception {
+
+		super.start(stage);
+		// 设置快捷键
+		// getScene().getAccelerators().put();
 	}
 }

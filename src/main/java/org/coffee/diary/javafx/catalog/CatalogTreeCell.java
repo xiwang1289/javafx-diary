@@ -1,7 +1,7 @@
 package org.coffee.diary.javafx.catalog;
 
 import org.coffee.diary.common.DiaryConstants;
-import org.coffee.diary.service.CatalogService;
+import org.coffee.diary.service.NoteService;
 import org.springframework.util.StringUtils;
 
 import javafx.scene.control.TreeView;
@@ -10,12 +10,12 @@ import javafx.util.converter.DefaultStringConverter;
 
 public class CatalogTreeCell extends TextFieldTreeCell<String> {
 
-	private CatalogService catalogService;
+	private NoteService noteService;
 
-	public CatalogTreeCell(CatalogService catalogService) {
+	public CatalogTreeCell(NoteService noteService) {
 
 		super(new DefaultStringConverter());
-		this.catalogService = catalogService;
+		this.noteService = noteService;
 	}
 
 	@Override
@@ -33,6 +33,6 @@ public class CatalogTreeCell extends TextFieldTreeCell<String> {
 		CatalogTreeItem item = (CatalogTreeItem) super.getTreeItem();
 		item.getCatalog().setMenuName(item.getValue());
 		TreeView<String> tree = super.getTreeView();
-		catalogService.updateCatalog(((CatalogTreeItem) tree.getRoot()).getCatalog());
+		noteService.updateCatalog(((CatalogTreeItem) tree.getRoot()).getCatalog());
 	}
 }
